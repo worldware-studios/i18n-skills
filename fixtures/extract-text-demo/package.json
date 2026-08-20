@@ -1,0 +1,24 @@
+{
+  "name": "extract-text-demo",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Throwaway fixture for dry-running the extract-text skill",
+  "directories": {
+    "i18n": "src/i18n",
+    "l10n": "res/l10n",
+    "root": "."
+  },
+  "imports": {
+    "#i18n/*": "./src/i18n/*",
+    "#l10n/*": "./res/l10n/*",
+    "#root/*": "./*"
+  },
+  "scripts": {
+    "i18n-export": "msg export",
+    "l10n-import": "msg import"
+  },
+  "dependencies": {
+    "@worldware/msg": "^0.12.0"
+  }
+}
