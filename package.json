@@ -1,0 +1,39 @@
+{
+  "name": "@worldware/i18n-skills",
+  "version": "0.0.0",
+  "description": "Agent skills for i18n workflows: extract text, localize, and work with msg / msg-cli",
+  "license": "MIT",
+  "author": "Joel Sahleen",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/worldware-studios/i18n-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/worldware-studios/i18n-skills/issues"
+  },
+  "homepage": "https://github.com/worldware-studios/i18n-skills#readme",
+  "keywords": [
+    "i18n",
+    "l10n",
+    "localization",
+    "agent-skills",
+    "cursor",
+    "msg",
+    "extract-text"
+  ],
+  "files": [
+    ".agents/skills",
+    "CATALOG.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "test": "./scripts/validate-skills.sh",
+    "prepack": "npm test"
+  },
+  "devDependencies": {
+    "semantic-release": "^25.0.8"
+  }
+}

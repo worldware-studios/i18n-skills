@@ -10,7 +10,7 @@
 4. Put long reference material in `references/`, scripts in `scripts/`, static files in `assets/`.
 5. Link supporting files one level deep from `SKILL.md` only.
 6. Add a row to `CATALOG.md`.
-7. Run `./scripts/validate-skills.sh`.
+7. Run `npm test` (or `./scripts/validate-skills.sh`).
 
 ## Description tips
 
@@ -27,6 +27,17 @@ description: Helps with PDFs.
 - Default: the agent may auto-apply the skill when the description matches context.
 - Set `disable-model-invocation: true` only when the skill must be invoked explicitly via `/skill-name`.
 
+## Pull requests
+
+PRs are squash-merged to `main`. **Title the PR using [Conventional Commits](https://www.conventionalcommits.org)** (`type(scope): summary`) — that title becomes the landed commit and is what [semantic-release](https://semantic-release.gitbook.io/) uses to version `@worldware/i18n-skills`.
+
+Allowed types: `feat`, `fix`, `refactor`, `test`, `docs`, `build`, `chore`, `perf`, `ci`.
+
+- `feat` — minor version
+- `fix`, `perf` — patch version
+- `feat!` or a `BREAKING CHANGE:` footer — major version
+- `ci`, `chore`, `docs`, `test`, `refactor`, `build` — no npm release
+
 ## Review checklist
 
 - [ ] Name is lowercase letters, numbers, and single hyphens
@@ -34,3 +45,4 @@ description: Helps with PDFs.
 - [ ] Body focuses on agent instructions, not marketing copy
 - [ ] Optional dirs follow `scripts/`, `references/`, `assets/`
 - [ ] Catalog updated
+- [ ] PR title follows Conventional Commits

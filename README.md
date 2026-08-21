@@ -1,8 +1,45 @@
-# Agent Skills Collection Template
+# i18n-skills
 
-A GitHub-ready template for collecting, sharing, and versioning [Agent Skills](https://agentskills.io) — portable packages that teach AI agents specialized workflows.
+Agent skills for i18n workflows — extract hard-coded UI copy, localize, and work with [msg](https://github.com/worldware-studios/msg) / [msg-cli](https://github.com/worldware-studios/msg-cli).
 
-Compatible with Cursor, Claude Code, Codex, VS Code Copilot, and any client that follows the Agent Skills standard.
+Compatible with Cursor, Claude Code, Codex, VS Code Copilot, and any client that follows the [Agent Skills](https://agentskills.io) standard.
+
+Published as [`@worldware/i18n-skills`](https://www.npmjs.com/package/@worldware/i18n-skills). Skills live at `.agents/skills/` inside the package.
+
+## Install
+
+**From npm:**
+
+```bash
+npm install @worldware/i18n-skills
+```
+
+Skills are at `node_modules/@worldware/i18n-skills/.agents/skills/`. Copy or symlink them into your project (`.agents/skills/` or `.cursor/skills/`) or your user skill directory.
+
+**From GitHub (skills CLI):**
+
+```bash
+npx skills add worldware-studios/i18n-skills
+```
+
+**Cursor (GitHub import):** Customize → Skills / Rules → add `https://github.com/worldware-studios/i18n-skills`.
+
+**User-level (clone or copy):**
+
+```bash
+# Copy or symlink individual skills
+ln -s "$(pwd)/.agents/skills/extract-text" ~/.agents/skills/extract-text
+
+# Cursor also loads ~/.cursor/skills/
+ln -s "$(pwd)/.agents/skills/extract-text" ~/.cursor/skills/extract-text
+```
+
+**Project-level:**
+
+```bash
+cp -R .agents/skills/extract-text /path/to/project/.agents/skills/
+# or: /path/to/project/.cursor/skills/
+```
 
 ## Layout
 
@@ -21,37 +58,7 @@ Compatible with Cursor, Claude Code, Codex, VS Code Copilot, and any client that
 
 Each skill is a directory whose name matches the `name` field in `SKILL.md`.
 
-## Quick start
-
-### Use this as a template
-
-1. Click **Use this template** on GitHub (or clone this repo).
-2. Rename the collection in `README.md` and `CATALOG.md`.
-3. Add your skills under `.agents/skills/`.
-4. Update `CATALOG.md` and run `./scripts/validate-skills.sh`.
-
-### Install skills locally
-
-**User-level (all projects):**
-
-```bash
-# Copy or symlink individual skills
-ln -s "$(pwd)/.agents/skills/my-skill" ~/.agents/skills/my-skill
-
-# Cursor also loads ~/.cursor/skills/
-ln -s "$(pwd)/.agents/skills/my-skill" ~/.cursor/skills/my-skill
-```
-
-**Project-level (one repo):**
-
-```bash
-cp -R .agents/skills/my-skill /path/to/project/.agents/skills/
-# or: /path/to/project/.cursor/skills/
-```
-
-**Cursor (GitHub import):** Customize → Skills / Rules → add the repository URL.
-
-### Create a new skill
+## Create a new skill
 
 ```bash
 ./scripts/new-skill.sh my-skill-name
@@ -59,10 +66,11 @@ cp -R .agents/skills/my-skill /path/to/project/.agents/skills/
 
 Then edit `.agents/skills/my-skill-name/SKILL.md` — especially the `description` (what + when).
 
-### Validate
+## Validate
 
 ```bash
-./scripts/validate-skills.sh
+npm test
+# or: ./scripts/validate-skills.sh
 ```
 
 Requires [`skills-ref`](https://github.com/agentskills/agentskills/tree/main/skills-ref) when you want full frontmatter validation:
@@ -79,6 +87,16 @@ npm install -g @agentskills/skills-ref   # if published
 - [ ] `SKILL.md` stays concise (under ~500 lines); details go in `references/`
 - [ ] Scripts are self-contained and documented
 - [ ] Entry added to `CATALOG.md`
+
+## Versioning and releases
+
+Pushes to `main` run [semantic-release](https://semantic-release.gitbook.io/). Squash-merge PR titles must follow [Conventional Commits](https://www.conventionalcommits.org) (`type(scope): summary`) so the landed commit can bump the npm version:
+
+- `feat` — minor
+- `fix`, `perf` — patch
+- `feat!` / `BREAKING CHANGE` — major
+
+`ci`, `chore`, `docs`, `test`, and `refactor` do not publish a new version.
 
 ## References
 
