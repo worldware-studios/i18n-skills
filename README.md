@@ -52,6 +52,7 @@ cp -R .agents/skills/extract-text /path/to/project/.agents/skills/
 ├── fixtures/                # Dry-run / demo projects for skills
 ├── templates/skill/         # Copy this when adding a new skill
 ├── scripts/                 # Collection-level tooling
+├── package.json             # npm package @worldware/i18n-skills
 ├── CATALOG.md               # Human-readable skill index
 └── CONTRIBUTING.md          # How to add or change skills
 ```
