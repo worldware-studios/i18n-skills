@@ -9,12 +9,10 @@ Compatible with Cursor, Claude Code, Codex, VS Code Copilot, and any client that
 ```text
 .
 ├── .agents/skills/          # Skills discovered by agents (portable path)
-│   ├── example-hello/       # Minimal skill (SKILL.md only)
-│   └── example-with-resources/
+│   └── extract-text/        # Externalize hard-coded TS/JS strings for i18n
 │       ├── SKILL.md
-│       ├── scripts/         # Optional executables
-│       ├── references/      # Optional on-demand docs
-│       └── assets/          # Optional templates / static files
+│       └── references/      # Optional on-demand docs
+├── fixtures/                # Dry-run / demo projects for skills
 ├── templates/skill/         # Copy this when adding a new skill
 ├── scripts/                 # Collection-level tooling
 ├── CATALOG.md               # Human-readable skill index
@@ -29,8 +27,8 @@ Each skill is a directory whose name matches the `name` field in `SKILL.md`.
 
 1. Click **Use this template** on GitHub (or clone this repo).
 2. Rename the collection in `README.md` and `CATALOG.md`.
-3. Delete the `example-*` skills (or keep them as references).
-4. Add your skills under `.agents/skills/`.
+3. Add your skills under `.agents/skills/`.
+4. Update `CATALOG.md` and run `./scripts/validate-skills.sh`.
 
 ### Install skills locally
 
