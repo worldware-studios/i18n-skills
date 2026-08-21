@@ -29,14 +29,22 @@ description: Helps with PDFs.
 
 ## Pull requests
 
-PRs are squash-merged to `main`. **Title the PR using [Conventional Commits](https://www.conventionalcommits.org)** (`type(scope): summary`) — that title becomes the landed commit and is what [semantic-release](https://semantic-release.gitbook.io/) uses to version `@worldware/i18n-skills`.
+PRs are squash-merged to `main`. **Title the PR using [Conventional Commits](https://www.conventionalcommits.org)** (`type(scope): summary`). That title becomes the landed commit and is what [semantic-release](https://semantic-release.gitbook.io/) uses to version `@worldware/i18n-skills`.
 
 Allowed types: `feat`, `fix`, `refactor`, `test`, `docs`, `build`, `chore`, `perf`, `ci`.
 
 - `feat` — minor version
 - `fix`, `perf` — patch version
-- `feat!` or a `BREAKING CHANGE:` footer — major version
+- A `BREAKING CHANGE:` footer in the PR body — major version
 - `ci`, `chore`, `docs`, `test`, `refactor`, `build` — no npm release
+
+Do not edit `package.json` `version`. Leave it at `0.0.0`; semantic-release sets the published version.
+
+## Releases
+
+Pushes to `main` run the Verify and Release workflow. After tests pass, semantic-release publishes `@worldware/i18n-skills` to npm via [trusted publishing](https://docs.npmjs.com/trusted-publishers/) (OIDC; no `NPM_TOKEN`).
+
+The package enables [npm provenance](https://docs.npmjs.com/generating-provenance-statements). Provenance is only accepted from a **public** GitHub repository. A private repo will fail `npm publish` with `E422` even when OIDC authentication succeeds.
 
 ## Review checklist
 
@@ -46,3 +54,4 @@ Allowed types: `feat`, `fix`, `refactor`, `test`, `docs`, `build`, `chore`, `per
 - [ ] Optional dirs follow `scripts/`, `references/`, `assets/`
 - [ ] Catalog updated
 - [ ] PR title follows Conventional Commits
+- [ ] `package.json` version left at `0.0.0`
